@@ -1,0 +1,19 @@
+{
+    "name": "alexandr.kopyl/php-master.dev",
+    "description": "phpmaster",
+    "type": "project",
+    "license": "MSI",
+    "authors": [
+        {
+            "name": "Alexsander",
+            "email": "alexsander11115@gmail.com"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "ishop\\": "vendor/ishop",
+            "app\\": "app"
+        }
+    },
+    "require": {}
+}
