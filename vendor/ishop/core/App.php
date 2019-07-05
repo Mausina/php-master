@@ -16,6 +16,8 @@ class App
         self::$app = Registry::instanse();
 
         $this->getParams();
+
+        new ErrorHandler();
     }
 
     protected function getParams(){

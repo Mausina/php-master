@@ -8,4 +8,4 @@ require_once LIBS . "/functions.php";
 
 $new_app = new \ishop\App();
 
-debug($new_app::$app->getProperties());
+throw new Exception('Страница не найдена',404);
