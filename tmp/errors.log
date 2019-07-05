@@ -26,3 +26,11 @@
 =======================
 [2019-07-05 11:22:02] Текс ошибки: Страница не найдена | Файл: C:\WorkDirectori\laragon\www\phpMaster\public\index.php | Строка: 11 | Код ошибки: 404
 =======================
+[2019-07-05 13:47:26] Текс ошибки: Страница не найдена | Файл: C:\WorkDirectori\laragon\www\phpMaster\vendor\ishop\core\Router.php | Строка: 34 | Код ошибки: 404
+=======================
+[2019-07-05 13:50:00] Текс ошибки: Страница не найдена | Файл: C:\WorkDirectori\laragon\www\phpMaster\vendor\ishop\core\Router.php | Строка: 34 | Код ошибки: 404
+=======================
+[2019-07-05 14:12:11] Текс ошибки: Контроллер app\controllers\PageVewController не найден | Файл: C:\WorkDirectori\laragon\www\phpMaster\vendor\ishop\core\Router.php | Строка: 46 | Код ошибки: 404
+=======================
+[2019-07-05 14:12:19] Текс ошибки: Метод app\controllers\MainController::index не найден | Файл: C:\WorkDirectori\laragon\www\phpMaster\vendor\ishop\core\Router.php | Строка: 42 | Код ошибки: 404
+=======================
