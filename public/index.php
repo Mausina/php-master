@@ -3,4 +3,4 @@
  * Это фронт контроллер
  */
 
-echo "Hello world";
+require_once "../config/init.php";
