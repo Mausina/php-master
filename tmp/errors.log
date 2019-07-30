@@ -34,3 +34,7 @@
 =======================
 [2019-07-05 14:12:19] Текс ошибки: Метод app\controllers\MainController::index не найден | Файл: C:\WorkDirectori\laragon\www\phpMaster\vendor\ishop\core\Router.php | Строка: 42 | Код ошибки: 404
 =======================
+[2019-07-10 06:40:34] Текс ошибки: Страница не найдена | Файл: C:\WorkDirectori\laragon\www\phpMaster\vendor\ishop\core\Router.php | Строка: 51 | Код ошибки: 404
+=======================
+[2019-07-10 06:40:35] Текс ошибки: Страница не найдена | Файл: C:\WorkDirectori\laragon\www\phpMaster\vendor\ishop\core\Router.php | Строка: 51 | Код ошибки: 404
+=======================
