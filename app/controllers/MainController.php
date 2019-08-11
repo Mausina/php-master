@@ -4,11 +4,11 @@
 namespace app\controllers;
 
 
-class MainController
+class MainController extends AppController
 {
-
     public function indexAction(){
-        echo __METHOD__;
+        $this->setMeta(['title'=> 'Main','description'=>'MainDescription']);
+        debug($this->meta);
     }
 
 }
