@@ -33,6 +33,9 @@ class View
     }
 
     public function render($data){
+        if(is_array($data)){
+            extract($data);
+        }
         $viewFile = APP . "/views/{$this->prefix}{$this->controller}/{$this->view}.php";
         ob_start();
         if(is_file($viewFile)){
@@ -52,6 +55,8 @@ class View
         }
     }
     public function getMeta(){
-
+            $output = '<title>' . $this->meta['title'] . '</title>' . PHP_EOL;
+            $output .= '<meta name="description" content="' . $this->meta['title'] . '">'. PHP_EOL;
+            return $output;
     }
 }
