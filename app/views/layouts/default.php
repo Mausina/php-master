@@ -8,5 +8,7 @@
 </head>
 <body>
 <h1>Default Teamplate</h1>
+
+<?=$content?>
 </body>
 </html>
