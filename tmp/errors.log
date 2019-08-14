@@ -1,8 +1,4 @@
-[2019-08-13 13:25:39] Текс ошибки: Страница не найдена | Файл: W:\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 52 | Код ошибки: 404
+[2019-08-14 16:55:29] Текс ошибки: Could not connect to database (ishop2). | Файл: W:\domains\phpMaster\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Строка: 437 | Код ошибки: 1045
 =======================
-[2019-08-13 13:25:39] Текс ошибки: Страница не найдена | Файл: W:\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 52 | Код ошибки: 404
-=======================
-[2019-08-14 15:56:26] Текс ошибки: Страница не найдена | Файл: W:\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-08-14 15:56:26] Текс ошибки: Страница не найдена | Файл: W:\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
+[2019-08-14 16:56:28] Текс ошибки: Нет соеденения с бд | Файл: W:\domains\phpMaster\vendor\ishop\core\Db.php | Строка: 18 | Код ошибки: 500
 =======================
