@@ -3,7 +3,7 @@
 
 namespace ishop;
 
-
+//use \RedBeanPHP\R as R;
 
 class Db
 {

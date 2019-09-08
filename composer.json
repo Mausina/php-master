@@ -16,6 +16,6 @@
         }
     },
     "require": {
-        "gabordemooij/redbean": "dev-master"
+        "gabordemooij/redbean": "^5.3"
     }
 }
