@@ -1,5 +1,5 @@
 <!--banner-starts-->
-<div class="bnr" id="home" style="display: block !important;">
+<div class="bnr" id="home">
     <div  id="top" class="callbacks_container">
         <ul class="rslides" id="slider4">
             <li>
