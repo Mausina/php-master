@@ -2,51 +2,5 @@
 =======================
 [2019-08-14 16:56:28] Текс ошибки: Нет соеденения с бд | Файл: W:\domains\phpMaster\vendor\ishop\core\Db.php | Строка: 18 | Код ошибки: 500
 =======================
-[2019-08-11 16:04:57] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 51 | Код ошибки: 404
-=======================
-[2019-09-08 10:45:50] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 10:45:50] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 10:52:06] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 11:02:10] Текс ошибки: Нет соеденения с бд | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Db.php | Строка: 18 | Код ошибки: 500
-=======================
-[2019-09-08 11:04:21] Текс ошибки: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ishop2.test' doesn't exist | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Строка: 194 | Код ошибки: 0
-=======================
-[2019-09-08 15:41:26] Текс ошибки: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'ishop2.posts' doesn't exist | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\gabordemooij\redbean\RedBeanPHP\Driver\RPDO.php | Строка: 194 | Код ошибки: 0
-=======================
-[2019-09-08 16:00:10] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 16:31:55] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 16:35:18] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 16:36:30] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 16:36:35] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 16:38:59] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 16:40:01] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 16:55:35] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 16:55:45] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 16:56:06] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 16:58:04] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 17:05:36] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 17:08:27] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 17:08:29] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 17:23:40] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 17:23:49] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
-=======================
-[2019-09-08 17:24:24] Текс ошибки: Страница не найдена | Файл: D:\OpenServ\OSPanel\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
+[2019-09-09 15:05:51] Текс ошибки: Страница не найдена | Файл: W:\domains\phpMaster\vendor\ishop\core\Router.php | Строка: 53 | Код ошибки: 404
 =======================
