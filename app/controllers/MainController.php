@@ -2,22 +2,17 @@
 
 
 namespace app\controllers;
-use ishop\Cache;
 
 
 class MainController extends AppController
 {
 
     public function indexAction(){
+        $brands = \R::find('brand','LIMIT 3');
+        $hits = \R::find('product',"hit = '1' AND status = '1' LIMIT 8");
         $this->setMeta(['title'=> 'Main','description'=>'MainDescription']);
-        $cache = Cache::instanse();
-//        $cache->set('test',$posts);
-//
-//        $data = $cache->get('test');
-//        if(!$data){
-//            $cache->set('test',$posts);
-//        }
-//        $this->set(compact('name','age','posts'));
+
+        $this->set(compact('brands','hits'));
     }
 
 }
