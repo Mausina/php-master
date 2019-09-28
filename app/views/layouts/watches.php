@@ -15,14 +15,14 @@ use app\widgets\menu\Menu;
     <!--theme-style-->
     <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!--//theme-style-->
+    <link rel="stylesheet" href="megamenu/css/style.css">
+    <link rel="stylesheet" href="megamenu/css/ionicons.min.css">
+
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <!--start-menu-->
     <script src="/js/simpleCart.min.js"> </script>
-    <link href="/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
-    <script type="text/javascript" src="/js/memenu.js"></script>
-    <script>$(document).ready(function(){$(".memenu").memenu();});</script>
     <!--dropdown-->
     <script src="/js/jquery.easydropdown.js"></script>
 </head>
@@ -75,11 +75,13 @@ use app\widgets\menu\Menu;
     <div class="container">
         <div class="header">
             <div class="col-md-9 header-left">
-            <div class="menu">
-            <?php new \app\widgets\menu\Menu([
-                    'tpl' => WWW . '/menu/menu.php'
-            ])?>
-            </div>
+                <div class="menu-container">
+                    <div class="menu">
+                        <?php new \app\widgets\menu\Menu([
+                            'tpl' => WWW . '/menu/menu.php'
+                        ]) ?>
+                    </div>
+                </div>
                <!--<div class="top-nav">
                     <ul class="memenu skyblue"><li class="active"><a href="index.html">Home</a></li>
                         <li class="grid"><a href="#">Men</a>
@@ -295,6 +297,7 @@ use app\widgets\menu\Menu;
         </div>
     </div>
 </div>
+<script src="megamenu/js/megamenu.js"></script>
 <script src="js/main.js"></script>
 <!--footer-end-->
 </body>
