@@ -1,30 +1,23 @@
-<?php
-
-use app\widgets\menu\Menu;
-
-?>
-
+<!--A Design by W3layouts
+Author: W3layout
+Author URL: http://w3layouts.com
+License: Creative Commons Attribution 3.0 Unported
+License URL: http://creativecommons.org/licenses/by/3.0/
+-->
 <!DOCTYPE html>
 <html>
 <head>
-    <?= $this->getMeta();?>
-    <link href="/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <!--jQuery(necessary for Bootstrap's JavaScript plugins)-->
-    <script src="/js/jquery-1.11.0.min.js"></script>
-    <!--Custom-Theme-files-->
+    <base href="/">
+    <?=$this->getMeta();?>
+    <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="megamenu/css/ionicons.min.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="megamenu/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link rel="stylesheet" href="css/flexslider.css" type="text/css" media="screen" />
     <!--theme-style-->
-    <link href="/css/style.css" rel="stylesheet" type="text/css" media="all" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
     <!--//theme-style-->
-    <link rel="stylesheet" href="/megamenu/css/style.css">
-    <link rel="stylesheet" href="/megamenu/css/ionicons.min.css">
-
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <!--start-menu-->
-    <script src="/js/simpleCart.min.js"> </script>
-    <!--dropdown-->
-    <script src="/js/jquery.easydropdown.js"></script>
 </head>
 <body>
 <!--top-header-->
@@ -35,7 +28,7 @@ use app\widgets\menu\Menu;
                 <div class="drop">
                     <div class="box">
                         <select id="currency" tabindex="4" class="dropdown drop">
-                            <?php new \app\widgets\currency\Currency();?>
+                            <?php new \app\widgets\currency\Currency(); ?>
                         </select>
                     </div>
                     <div class="box1">
@@ -51,12 +44,22 @@ use app\widgets\menu\Menu;
             </div>
             <div class="col-md-6 top-header-left">
                 <div class="cart box_1">
-                    <a href="checkout.html">
+                    <a href="cart/show" onclick="getCart(); return false;">
+                        <div class="total">
+                            <img src="images/cart-1.png" alt="" />
+                            <?php if(!empty($_SESSION['cart'])): ?>
+                                <span class="simpleCart_total"><?=$_SESSION['cart.currency']['symbol_left'] . $_SESSION['cart.sum'] . $_SESSION['cart.currency']['symbol_right'];?></span>
+                            <?php else: ?>
+                                <span class="simpleCart_total">Empty Cart</span>
+                            <?php endif; ?>
+                        </div>
+                    </a>
+                    <!--<a href="checkout.html">
                         <div class="total">
                             <span class="simpleCart_total"></span></div>
-                        <img src="/images/cart-1.png" alt="" />
+                        <img src="images/cart-1.png" alt="" />
                     </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>
+                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>-->
                     <div class="clearfix"> </div>
                 </div>
             </div>
@@ -67,7 +70,7 @@ use app\widgets\menu\Menu;
 <!--top-header-->
 <!--start-logo-->
 <div class="logo">
-    <a href="index.html"><h1>Luxury Watches</h1></a>
+    <a href="<?=PATH;?>"><h1>Luxury Watches</h1></a>
 </div>
 <!--start-logo-->
 <!--bottom-header-->
@@ -78,8 +81,8 @@ use app\widgets\menu\Menu;
                 <div class="menu-container">
                     <div class="menu">
                         <?php new \app\widgets\menu\Menu([
-                            'tpl' => WWW . '/menu/menu.php'
-                        ]) ?>
+                            'tpl' => WWW . '/menu/menu.php',
+                        ]); ?>
                     </div>
                 </div>
                 <div class="clearfix"> </div>
@@ -95,9 +98,11 @@ use app\widgets\menu\Menu;
     </div>
 </div>
 <!--bottom-header-->
+
 <div class="content">
-    <?= $content ?>
+    <?=$content;?>
 </div>
+
 <!--information-starts-->
 <div class="information">
     <div class="container">
@@ -160,8 +165,106 @@ use app\widgets\menu\Menu;
         </div>
     </div>
 </div>
-<script src="/megamenu/js/megamenu.js"></script>
-<script src="/js/main.js"></script>
 <!--footer-end-->
+
+<!-- Modal -->
+<div class="modal fade" id="cart" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Корзина</h4>
+            </div>
+            <div class="modal-body">
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">Продолжить покупки</button>
+                <a href="cart/view" type="button" class="btn btn-primary">Оформить заказ</a>
+                <button type="button" class="btn btn-danger" onclick="clearCart()">Очистить корзину</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<?php $curr = \ishop\App::$app->getProperty('currency'); ?>
+<script>
+    var path = '<?=PATH;?>',
+        course = <?=$curr['value'];?>,
+        symboleLeft = '<?=$curr['symbol_left'];?>',
+        symboleRight = '<?=$curr['symbol_right'];?>';
+</script>
+
+<script src="js/jquery-1.11.0.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<!--dropdown-->
+<script src="js/jquery.easydropdown.js"></script>
+<!--Slider-Starts-Here-->
+<script src="js/responsiveslides.min.js"></script>
+<script>
+    // You can also use "$(window).load(function() {"
+    $(function () {
+        // Slideshow 4
+        $("#slider4").responsiveSlides({
+            auto: true,
+            pager: true,
+            nav: true,
+            speed: 500,
+            namespace: "callbacks",
+            before: function () {
+                $('.events').append("<li>before event fired.</li>");
+            },
+            after: function () {
+                $('.events').append("<li>after event fired.</li>");
+            }
+        });
+
+    });
+</script>
+<script src="megamenu/js/megamenu.js"></script>
+<script src="js/imagezoom.js"></script>
+<script defer src="js/jquery.flexslider.js"></script>
+<script>
+    // Can also be used with $(document).ready()
+    $(window).load(function() {
+        $('.flexslider').flexslider({
+            animation: "slide",
+            controlNav: "thumbnails"
+        });
+    });
+</script>
+<script src="js/jquery.easydropdown.js"></script>
+<script type="text/javascript">
+    $(function() {
+
+        var menu_ul = $('.menu_drop > li > ul'),
+            menu_a  = $('.menu_drop > li > a');
+
+        menu_ul.hide();
+
+        menu_a.click(function(e) {
+            e.preventDefault();
+            if(!$(this).hasClass('active')) {
+                menu_a.removeClass('active');
+                menu_ul.filter(':visible').slideUp('normal');
+                $(this).addClass('active').next().stop(true,true).slideDown('normal');
+            } else {
+                $(this).removeClass('active');
+                $(this).next().stop(true,true).slideUp('normal');
+            }
+        });
+
+    });
+</script>
+<script src="js/main.js"></script>
+<!--End-slider-script-->
+
+<?php
+$logs = \R::getDatabaseAdapter()
+    ->getDatabase()
+    ->getLogger();
+
+debug( $logs->grep( 'SELECT' ) );
+?>
 </body>
 </html>
