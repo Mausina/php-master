@@ -1,6 +1,5 @@
 .idea/
 
-vendor/vlucas
-vendor/swiftmailer
-vendor/gabordemooij
-vendor/composer
+vendor/vlucas/
+vendor/swiftmailer/
+vendor/composer/
