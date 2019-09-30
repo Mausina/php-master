@@ -1,19 +1,17 @@
 <?php
 
-
 namespace ishop\base;
-
 
 use ishop\Db;
 
-abstract class Model
-{
+abstract class Model{
+
     public $attributes = [];
     public $errors = [];
     public $rules = [];
 
-    public function __construct()
-    {
-        Db::instanse();
+    public function __construct(){
+        Db::instance();
     }
+
 }

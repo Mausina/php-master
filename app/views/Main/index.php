@@ -3,99 +3,73 @@
     <div  id="top" class="callbacks_container">
         <ul class="rslides" id="slider4">
             <li>
-                <img src="/images/bnr-1.jpg" alt=""/>
+                <img src="images/bnr-1.jpg" alt=""/>
             </li>
             <li>
-                <img src="/images/bnr-2.jpg" alt=""/>
+                <img src="images/bnr-2.jpg" alt=""/>
             </li>
             <li>
-                <img src="/images/bnr-3.jpg" alt=""/>
+                <img src="images/bnr-3.jpg" alt=""/>
             </li>
         </ul>
     </div>
     <div class="clearfix"> </div>
 </div>
 <!--banner-ends-->
-<!--Slider-Starts-Here-->
-<script src="/js/responsiveslides.min.js"></script>
-<script>
-    // You can also use "$(window).load(function() {"
-    $(function () {
-        // Slideshow 4
-        $("#slider4").responsiveSlides({
-            auto: true,
-            pager: true,
-            nav: true,
-            speed: 500,
-            namespace: "callbacks",
-            before: function () {
-                $('.events').append("<li>before event fired.</li>");
-            },
-            after: function () {
-                $('.events').append("<li>after event fired.</li>");
-            }
-        });
 
-    });
-</script>
-<!--End-slider-script-->
 <!--about-starts-->
-<?php if($brands):?>
+<?php if($brands): ?>
 <div class="about">
     <div class="container">
         <div class="about-top grid-1">
-            <?php foreach ($brands as $brand):?>
-            <div class="col-md-4 about-left">
+            <?php foreach($brands as $brand): ?>
+                <div class="col-md-4 about-left">
                 <figure class="effect-bubba">
-                    <img class="img-responsive" src="/images/<?php echo $brand['img']?>" alt=""/>
+                    <img class="img-responsive" src="images/<?=$brand->img;?>" alt=""/>
                     <figcaption>
-                        <h2><?php echo $brand['title']?></h2>
-                        <p><?php echo $brand['description']?></p>
+                        <h2><?=$brand->title;?></h2>
+                        <p><?=$brand->description;?></p>
                     </figcaption>
                 </figure>
             </div>
-            <?php endforeach;?>
+            <?php endforeach; ?>
             <div class="clearfix"></div>
         </div>
     </div>
 </div>
-<?php endif;?>
+<?php endif; ?>
 <!--about-end-->
 <!--product-starts-->
-<?php if($hits):?>
-<?php $curr = \ishop\App::$app->getProperty('currency')?>
+<?php if($hits): ?>
+<?php $curr = \ishop\App::$app->getProperty('currency'); ?>
 <div class="product">
     <div class="container">
         <div class="product-top">
-
             <div class="product-one">
-                <?php foreach ($hits as $hit):?>
+            <?php foreach($hits as $hit): ?>
                 <div class="col-md-3 product-left">
                     <div class="product-main simpleCart_shelfItem">
-                        <a href="product/<?= $hit->alias?>" class="mask"><img class="img-responsive zoom-img" src="/images/<?= $hit->img?>" alt="" /></a>
+                        <a href="product/<?=$hit->alias;?>" class="mask"><img class="img-responsive zoom-img" src="images/<?=$hit->img;?>" alt="" /></a>
                         <div class="product-bottom">
-                            <h3><a href="product/<?= $hit->alias?>"><?= $hit->title?></a></h3>
-                            <p><?= $hit->description?></p>
-
-                            <h4><a class="add-to-cart-link" href="cart/add?<?= $hit->id?>"><i></i></a>
-                                <span class=" item_price"><?= $curr['symbol_left']?><?= $hit->price * $curr['value']?><?= $curr['symbol_right']?></span>
-                                <?php if($hit->old_price):?>
-                                    <smal><del><?= $curr['symbol_left']?><?= $hit->old_price * $curr['value']?><?= $curr['symbol_right']?></del></smal>
-                                <?php endif;?>
+                            <h3><a href="product/<?=$hit->alias;?>"><?=$hit->title;?></a></h3>
+                            <p>Explore Now</p>
+                            <h4>
+                                <a data-id="<?=$hit->id;?>" class="add-to-cart-link" href="cart/add?id=<?=$hit->id;?>"><i></i></a> <span class=" item_price"><?=$curr['symbol_left'];?><?=$hit->price * $curr['value'];?><?=$curr['symbol_right'];?></span>
+                            <?php if($hit->old_price): ?>
+                                <small><del><?=$curr['symbol_left'];?><?=$hit->old_price * $curr['value'];?><?=$curr['symbol_right'];?></del></small>
+                            <?php endif; ?>
                             </h4>
-
                         </div>
                         <div class="srch">
                             <span>-50%</span>
                         </div>
                     </div>
                 </div>
-                <?php endforeach;?>
+            <?php endforeach; ?>
                 <div class="clearfix"></div>
             </div>
-
         </div>
     </div>
 </div>
-<?php endif;?>
+<?php endif; ?>
 <!--product-end-->

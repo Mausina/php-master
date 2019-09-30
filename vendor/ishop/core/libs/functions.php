@@ -1,18 +1,15 @@
 <?php
-function debug($arr, $die = false){
-    echo "<pre>" . print_r($arr,true) . "</pre>";
-    if ($die){
-        die();
-    }
+
+function debug($arr){
+    echo '<pre>' . print_r($arr, true) . '</pre>';
 }
 
 function redirect($http = false){
-    if ($http){
+    if($http){
         $redirect = $http;
     }else{
         $redirect = isset($_SERVER['HTTP_REFERER']) ? $_SERVER['HTTP_REFERER'] : PATH;
     }
-
-    header("Location: $redirect" );
+    header("Location: $redirect");
     exit;
 }
