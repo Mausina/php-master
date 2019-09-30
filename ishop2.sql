@@ -1,22 +1,20 @@
 -- phpMyAdmin SQL Dump
--- version 4.8.5
--- https://www.phpmyadmin.net/
+-- version 4.0.10.6
+-- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Сен 28 2019 г., 11:48
--- Версия сервера: 10.3.13-MariaDB
--- Версия PHP: 5.6.38
+-- Время создания: Авг 22 2017 г., 09:13
+-- Версия сервера: 5.5.41-log
+-- Версия PHP: 5.6.3
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
+/*!40101 SET NAMES utf8 */;
 
 --
 -- База данных: `ishop2`
@@ -28,10 +26,11 @@ SET time_zone = "+00:00";
 -- Структура таблицы `attribute_group`
 --
 
-CREATE TABLE `attribute_group` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `title` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `attribute_group` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `title` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Дамп данных таблицы `attribute_group`
@@ -50,9 +49,10 @@ INSERT INTO `attribute_group` (`id`, `title`) VALUES
 -- Структура таблицы `attribute_product`
 --
 
-CREATE TABLE `attribute_product` (
-  `attr_id` int(10) UNSIGNED NOT NULL,
-  `product_id` int(11) UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `attribute_product` (
+  `attr_id` int(10) unsigned NOT NULL,
+  `product_id` int(11) unsigned NOT NULL,
+  PRIMARY KEY (`attr_id`,`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -114,11 +114,14 @@ INSERT INTO `attribute_product` (`attr_id`, `product_id`) VALUES
 -- Структура таблицы `attribute_value`
 --
 
-CREATE TABLE `attribute_value` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `attribute_value` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `value` varchar(255) NOT NULL,
-  `attr_group_id` int(10) UNSIGNED NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `attr_group_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `value` (`value`),
+  KEY `attr_group_id` (`attr_group_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=20 ;
 
 --
 -- Дамп данных таблицы `attribute_value`
@@ -151,13 +154,15 @@ INSERT INTO `attribute_value` (`id`, `value`, `attr_group_id`) VALUES
 -- Структура таблицы `brand`
 --
 
-CREATE TABLE `brand` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `brand` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `alias` varchar(255) NOT NULL,
   `img` varchar(255) NOT NULL DEFAULT 'brand_no_image.jpg',
-  `description` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `alias` (`alias`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=6 ;
 
 --
 -- Дамп данных таблицы `brand`
@@ -176,14 +181,16 @@ INSERT INTO `brand` (`id`, `title`, `alias`, `img`, `description`) VALUES
 -- Структура таблицы `category`
 --
 
-CREATE TABLE `category` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `category` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(255) NOT NULL,
   `alias` varchar(255) NOT NULL,
-  `parent_id` tinyint(3) UNSIGNED NOT NULL DEFAULT 0,
+  `parent_id` tinyint(3) unsigned NOT NULL DEFAULT '0',
   `keywords` varchar(255) DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `description` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `alias` (`alias`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=19 ;
 
 --
 -- Дамп данных таблицы `category`
@@ -211,15 +218,16 @@ INSERT INTO `category` (`id`, `title`, `alias`, `parent_id`, `keywords`, `descri
 -- Структура таблицы `currency`
 --
 
-CREATE TABLE `currency` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `currency` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `title` varchar(50) NOT NULL,
   `code` varchar(3) NOT NULL,
   `symbol_left` varchar(10) NOT NULL,
   `symbol_right` varchar(10) NOT NULL,
   `value` float(15,2) NOT NULL,
-  `base` enum('0','1') NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `base` enum('0','1') NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `currency`
@@ -236,11 +244,12 @@ INSERT INTO `currency` (`id`, `title`, `code`, `symbol_left`, `symbol_right`, `v
 -- Структура таблицы `gallery`
 --
 
-CREATE TABLE `gallery` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `img` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+CREATE TABLE IF NOT EXISTS `gallery` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL,
+  `img` varchar(255) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=4 ;
 
 --
 -- Дамп данных таблицы `gallery`
@@ -257,12 +266,13 @@ INSERT INTO `gallery` (`id`, `product_id`, `img`) VALUES
 -- Структура таблицы `modification`
 --
 
-CREATE TABLE `modification` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `product_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `modification` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `product_id` int(10) unsigned NOT NULL,
   `title` varchar(255) NOT NULL,
-  `price` float NOT NULL DEFAULT 0
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `price` float NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=7 ;
 
 --
 -- Дамп данных таблицы `modification`
@@ -282,15 +292,16 @@ INSERT INTO `modification` (`id`, `product_id`, `title`, `price`) VALUES
 -- Структура таблицы `order`
 --
 
-CREATE TABLE `order` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `user_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `order` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned NOT NULL,
   `status` enum('0','1') NOT NULL DEFAULT '0',
-  `date` timestamp NOT NULL DEFAULT current_timestamp(),
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `update_at` timestamp NULL DEFAULT NULL,
   `currency` varchar(10) NOT NULL,
-  `note` text DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `note` text,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -298,14 +309,16 @@ CREATE TABLE `order` (
 -- Структура таблицы `order_product`
 --
 
-CREATE TABLE `order_product` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `order_id` int(10) UNSIGNED NOT NULL,
-  `product_id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `order_product` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `order_id` int(10) unsigned NOT NULL,
+  `product_id` int(10) unsigned NOT NULL,
   `qty` int(11) NOT NULL,
   `title` varchar(255) NOT NULL,
-  `price` float NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `price` float NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `order_id` (`order_id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 -- --------------------------------------------------------
 
@@ -313,21 +326,25 @@ CREATE TABLE `order_product` (
 -- Структура таблицы `product`
 --
 
-CREATE TABLE `product` (
-  `id` int(10) UNSIGNED NOT NULL,
-  `category_id` tinyint(3) UNSIGNED NOT NULL,
-  `brand_id` tinyint(3) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `product` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `category_id` tinyint(3) unsigned NOT NULL,
+  `brand_id` tinyint(3) unsigned NOT NULL,
   `title` varchar(255) NOT NULL,
   `alias` varchar(255) NOT NULL,
-  `content` text DEFAULT NULL,
-  `price` float NOT NULL DEFAULT 0,
-  `old_price` float NOT NULL DEFAULT 0,
+  `content` text,
+  `price` float NOT NULL DEFAULT '0',
+  `old_price` float NOT NULL DEFAULT '0',
   `status` enum('0','1') NOT NULL DEFAULT '1',
   `keywords` varchar(255) DEFAULT NULL,
   `description` varchar(255) DEFAULT NULL,
   `img` varchar(255) NOT NULL DEFAULT 'no_image.jpg',
-  `hit` enum('0','1') NOT NULL DEFAULT '0'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `hit` enum('0','1') NOT NULL DEFAULT '0',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `alias` (`alias`),
+  KEY `category_id` (`category_id`,`brand_id`),
+  KEY `hit` (`hit`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=34 ;
 
 --
 -- Дамп данных таблицы `product`
@@ -372,9 +389,10 @@ INSERT INTO `product` (`id`, `category_id`, `brand_id`, `title`, `alias`, `conte
 -- Структура таблицы `related_product`
 --
 
-CREATE TABLE `related_product` (
-  `product_id` int(10) UNSIGNED NOT NULL,
-  `related_id` int(10) UNSIGNED NOT NULL
+CREATE TABLE IF NOT EXISTS `related_product` (
+  `product_id` int(10) unsigned NOT NULL,
+  `related_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`product_id`,`related_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
@@ -396,177 +414,18 @@ INSERT INTO `related_product` (`product_id`, `related_id`) VALUES
 -- Структура таблицы `user`
 --
 
-CREATE TABLE `user` (
-  `id` int(10) UNSIGNED NOT NULL,
+CREATE TABLE IF NOT EXISTS `user` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
   `login` varchar(255) NOT NULL,
   `password` varchar(255) NOT NULL,
   `email` varchar(255) NOT NULL,
   `name` varchar(255) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `role` enum('user','admin') NOT NULL DEFAULT 'user'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
---
--- Индексы сохранённых таблиц
---
-
---
--- Индексы таблицы `attribute_group`
---
-ALTER TABLE `attribute_group`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `attribute_product`
---
-ALTER TABLE `attribute_product`
-  ADD PRIMARY KEY (`attr_id`,`product_id`);
-
---
--- Индексы таблицы `attribute_value`
---
-ALTER TABLE `attribute_value`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `value` (`value`),
-  ADD KEY `attr_group_id` (`attr_group_id`);
-
---
--- Индексы таблицы `brand`
---
-ALTER TABLE `brand`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `alias` (`alias`);
-
---
--- Индексы таблицы `category`
---
-ALTER TABLE `category`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `alias` (`alias`);
-
---
--- Индексы таблицы `currency`
---
-ALTER TABLE `currency`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `gallery`
---
-ALTER TABLE `gallery`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `modification`
---
-ALTER TABLE `modification`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `order`
---
-ALTER TABLE `order`
-  ADD PRIMARY KEY (`id`);
-
---
--- Индексы таблицы `order_product`
---
-ALTER TABLE `order_product`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `order_id` (`order_id`);
-
---
--- Индексы таблицы `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `alias` (`alias`),
-  ADD KEY `category_id` (`category_id`,`brand_id`),
-  ADD KEY `hit` (`hit`);
-
---
--- Индексы таблицы `related_product`
---
-ALTER TABLE `related_product`
-  ADD PRIMARY KEY (`product_id`,`related_id`);
-
---
--- Индексы таблицы `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`id`),
-  ADD UNIQUE KEY `login` (`login`),
-  ADD UNIQUE KEY `email` (`email`);
-
---
--- AUTO_INCREMENT для сохранённых таблиц
---
-
---
--- AUTO_INCREMENT для таблицы `attribute_group`
---
-ALTER TABLE `attribute_group`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT для таблицы `attribute_value`
---
-ALTER TABLE `attribute_value`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
-
---
--- AUTO_INCREMENT для таблицы `brand`
---
-ALTER TABLE `brand`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT для таблицы `category`
---
-ALTER TABLE `category`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
-
---
--- AUTO_INCREMENT для таблицы `currency`
---
-ALTER TABLE `currency`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT для таблицы `gallery`
---
-ALTER TABLE `gallery`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
-
---
--- AUTO_INCREMENT для таблицы `modification`
---
-ALTER TABLE `modification`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
-
---
--- AUTO_INCREMENT для таблицы `order`
---
-ALTER TABLE `order`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT для таблицы `order_product`
---
-ALTER TABLE `order_product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT для таблицы `product`
---
-ALTER TABLE `product`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=34;
-
---
--- AUTO_INCREMENT для таблицы `user`
---
-ALTER TABLE `user`
-  MODIFY `id` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
+  `role` enum('user','admin') NOT NULL DEFAULT 'user',
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `login` (`login`),
+  UNIQUE KEY `email` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 AUTO_INCREMENT=1 ;
 
 --
 -- Ограничения внешнего ключа сохраненных таблиц
@@ -577,7 +436,6 @@ ALTER TABLE `user`
 --
 ALTER TABLE `order_product`
   ADD CONSTRAINT `order_product_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `order` (`id`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

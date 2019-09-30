@@ -1,21 +1,13 @@
 {
-    "name": "alexandr.kopyl/php-master.dev",
-    "description": "phpmaster",
-    "type": "project",
-    "license": "MSI",
-    "authors": [
-        {
-            "name": "Alexsander",
-            "email": "alexsander11115@gmail.com"
-        }
-    ],
-    "autoload": {
-        "psr-4": {
-            "ishop\\": "vendor/ishop/core",
-            "app\\": "app"
-        }
-    },
-    "require": {
-        "gabordemooij/redbean": "^5.3"
+  "autoload": {
+    "psr-4": {
+      "ishop\\": "vendor/ishop/core",
+      "app\\": "app"
     }
+  },
+  "require": {
+    "gabordemooij/redbean": "dev-master",
+    "vlucas/valitron": "^1.4",
+    "swiftmailer/swiftmailer": "^5.4"
+  }
 }

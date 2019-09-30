@@ -8,6 +8,7 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <html>
 <head>
     <base href="/">
+    <link rel="shortcut icon" href="images/star.png" type="image/png" />
     <?=$this->getMeta();?>
     <link href="css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
     <link href="megamenu/css/ionicons.min.css" rel="stylesheet" type="text/css" media="all" />
@@ -31,13 +32,17 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <?php new \app\widgets\currency\Currency(); ?>
                         </select>
                     </div>
-                    <div class="box1">
-                        <select tabindex="4" class="dropdown">
-                            <option value="" class="label">English :</option>
-                            <option value="1">English</option>
-                            <option value="2">French</option>
-                            <option value="3">German</option>
-                        </select>
+                    <div class="btn-group">
+                        <a class="dropdown-toggle" data-toggle="dropdown">Account <span class="caret"></span></a>
+                        <ul class="dropdown-menu">
+                            <?php if(!empty($_SESSION['user'])): ?>
+                                <li><a href="#">Добро пожаловать, <?=h($_SESSION['user']['name']);?></a></li>
+                                <li><a href="user/logout">Выход</a></li>
+                            <?php else: ?>
+                                <li><a href="user/login">Вход</a></li>
+                                <li><a href="user/signup">Регистрация</a></li>
+                            <?php endif; ?>
+                        </ul>
                     </div>
                     <div class="clearfix"></div>
                 </div>
@@ -54,12 +59,6 @@ License URL: http://creativecommons.org/licenses/by/3.0/
                             <?php endif; ?>
                         </div>
                     </a>
-                    <!--<a href="checkout.html">
-                        <div class="total">
-                            <span class="simpleCart_total"></span></div>
-                        <img src="images/cart-1.png" alt="" />
-                    </a>
-                    <p><a href="javascript:;" class="simpleCart_empty">Empty Cart</a></p>-->
                     <div class="clearfix"> </div>
                 </div>
             </div>
@@ -89,8 +88,12 @@ License URL: http://creativecommons.org/licenses/by/3.0/
             </div>
             <div class="col-md-3 header-right">
                 <div class="search-bar">
-                    <input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
-                    <input type="submit" value="">
+                    <form action="search" method="get" autocomplete="off">
+                        <input type="text" class="typeahead" id="typeahead" name="s">
+                        <input type="submit" value="">
+                    </form>
+                    <!--<input type="text" value="Search" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Search';}">
+                    <input type="submit" value="">-->
                 </div>
             </div>
             <div class="clearfix"> </div>
@@ -100,6 +103,22 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 <!--bottom-header-->
 
 <div class="content">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <?php if(isset($_SESSION['error'])): ?>
+                    <div class="alert alert-danger">
+                        <?php echo $_SESSION['error']; unset($_SESSION['error']); ?>
+                    </div>
+                <?php endif; ?>
+                <?php if(isset($_SESSION['success'])): ?>
+                    <div class="alert alert-success">
+                        <?php echo $_SESSION['success']; unset($_SESSION['success']); ?>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
     <?=$content;?>
 </div>
 
@@ -187,6 +206,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
     </div>
 </div>
 
+<div class="preloader"><img src="images/ring.svg" alt=""></div>
+
 <?php $curr = \ishop\App::$app->getProperty('currency'); ?>
 <script>
     var path = '<?=PATH;?>',
@@ -197,6 +218,8 @@ License URL: http://creativecommons.org/licenses/by/3.0/
 
 <script src="js/jquery-1.11.0.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
+<script src="js/validator.js"></script>
+<script src="js/typeahead.bundle.js"></script>
 <!--dropdown-->
 <script src="js/jquery.easydropdown.js"></script>
 <!--Slider-Starts-Here-->
